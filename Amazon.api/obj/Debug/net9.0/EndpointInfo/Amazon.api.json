@@ -934,6 +934,139 @@
         }
       }
     },
+    "/api/Payments": {
+      "get": {
+        "tags": [
+          "Payments"
+        ],
+        "parameters": [
+          {
+            "name": "OrderId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CreatedAt",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentDtoIEnumerableApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentDtoIEnumerableApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentDtoIEnumerableApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/Payments/{id}": {
       "get": {
         "tags": [
@@ -1106,50 +1239,69 @@
         }
       }
     },
-    "/api/Payments": {
-      "get": {
-        "tags": [
-          "Payments"
-        ],
-        "summary": "Obtiene todos los pagos registrados en el sistema",
-        "description": "Este endpoint recupera una lista completa de todos los pagos existentes en el sistema.\r\nLos resultados incluyen pagos en todos los estados (Pending, Completed, Failed).\r\n\r\nEjemplo de uso:\r\nGET /api/Payments",
-        "responses": {
-          "200": {
-            "description": "Retorna la lista de pagos exitosamente",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentDtoIEnumerableApiResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentDtoIEnumerableApiResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentDtoIEnumerableApiResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Error interno del servidor al procesar la solicitud"
-          }
-        }
-      }
-    },
     "/api/Products": {
       "get": {
         "tags": [
           "Products"
         ],
-        "summary": "Obtiene todos los productos registrados en el sistema",
-        "description": "Este endpoint recupera una lista completa de todos los productos disponibles en el catálogo.\r\nIncluye información básica como nombre, categoría, precio y stock de cada producto.\r\n\r\nEjemplo de uso:\r\nGET /api/Products",
+        "parameters": [
+          {
+            "name": "SellerId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Description",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Price",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "Category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Retorna la lista de productos exitosamente",
+            "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1168,8 +1320,68 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "500": {
-            "description": "Error interno del servidor al procesar la solicitud"
+            "description": "Internal Server Error"
           }
         }
       },
@@ -1736,7 +1948,10 @@
         "tags": [
           "Security"
         ],
+        "summary": "Registra un nuevo usuario en el sistema",
+        "description": "Este endpoint permite registrar un nuevo usuario en el sistema Amazon.\r\nLa contraseña se hashea automáticamente antes de almacenarse.\r\n\r\nEjemplo de body:\r\n{\r\n    \"login\": \"usuario123\",\r\n    \"password\": \"ContraseñaSegura123!\",\r\n    \"name\": \"Juan Pérez\",\r\n    \"role\": \"User\"\r\n}\r\n\r\nRoles disponibles: Administrator, Consumer, User\r\nSi no se especifica un rol, se asigna \"User\" por defecto.",
         "requestBody": {
+          "description": "Datos del usuario a registrar",
           "content": {
             "application/json-patch+json": {
               "schema": {
@@ -1762,7 +1977,64 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Usuario registrado exitosamente",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityDtoApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityDtoApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityDtoApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error en la validación de datos o usuario ya existe",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor al registrar el usuario",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1772,7 +2044,10 @@
         "tags": [
           "Token"
         ],
+        "summary": "Autentica un usuario y genera un token JWT",
+        "description": "Este endpoint valida las credenciales del usuario y genera un token JWT\r\nque puede ser usado para autenticar solicitudes en endpoints protegidos.\r\nEl token expira en 60 minutos.\r\n\r\nEjemplo de body:\r\n{\r\n    \"user\": \"usuario123\",\r\n    \"password\": \"Contraseña123\"\r\n}\r\n\r\nLa respuesta incluye un objeto con la propiedad \"token\" que contiene el JWT.\r\nEste token debe incluirse en el header Authorization de solicitudes protegidas:\r\nAuthorization: Bearer [token]",
         "requestBody": {
+          "description": "Credenciales de autenticación (login y password)",
           "content": {
             "application/json-patch+json": {
               "schema": {
@@ -1798,19 +2073,61 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Token/Config": {
-      "get": {
-        "tags": [
-          "Token"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
+            "description": "Autenticación exitosa, retorna token JWT",
+            "content": {
+              "text/plain": {
+                "schema": { }
+              },
+              "application/json": {
+                "schema": { }
+              },
+              "text/json": {
+                "schema": { }
+              }
+            }
+          },
+          "400": {
+            "description": "Error en la validación de las credenciales",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Credenciales inválidas o usuario no encontrado",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor al procesar la autenticación"
           }
         }
       }
@@ -1820,14 +2137,121 @@
         "tags": [
           "Users"
         ],
-        "summary": "Obtiene todos los usuarios registrados en el sistema",
-        "description": "Este endpoint recupera una lista completa de todos los usuarios del sistema.\r\nIncluye información básica como nombre, email y saldo de billetera.",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Retorna la lista de usuarios exitosamente"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoIEnumerableApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoIEnumerableApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoIEnumerableApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Error interno del servidor al procesar la solicitud"
+            "description": "Internal Server Error"
           }
         }
       },
@@ -2594,11 +3018,6 @@
       "OrderItemDto": {
         "type": "object",
         "properties": {
-          "orderId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
           "productId": {
             "type": "integer",
             "format": "int32"
@@ -2760,17 +3179,9 @@
             "format": "int32",
             "nullable": true
           },
-          "orderId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "status": {
             "type": "string",
             "nullable": true
-          },
-          "totalAmount": {
-            "type": "number",
-            "format": "double"
           },
           "createdAt": {
             "type": "string",
@@ -3091,6 +3502,25 @@
         },
         "additionalProperties": false
       },
+      "SecurityDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SecurityDto"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        },
+        "additionalProperties": false
+      },
       "StringApiResponse": {
         "type": "object",
         "properties": {
@@ -3300,6 +3730,29 @@
           },
           "data": {
             "$ref": "#/components/schemas/UserDto"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDtoIEnumerableApiResponse": {
+        "type": "object",
+        "properties": {
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserDto"
+            },
+            "nullable": true
           },
           "pagination": {
             "$ref": "#/components/schemas/Pagination"

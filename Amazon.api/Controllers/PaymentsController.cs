@@ -3,6 +3,9 @@ using Amazon.Core.CustomEntities;
 using Amazon.Core.Entities;
 using Amazon.Core.Enum;
 using Amazon.Core.Interface;
+using Amazon.Core.QueryFilters;
+using Amazon.Core.Services;
+using Amazon.infrastructure.DTOs;
 using Amazon.Infrastructure.DTOs;
 using Amazon.Infrastructure.Validators;
 using AutoMapper;
@@ -34,6 +37,64 @@ namespace Amazon.api.Controllers
             _validationService = validationService;
         }
 
+        /// <summary>
+        /// Obtiene una lista paginada de pagos con filtros opcionales
+        /// </summary>
+        /// <remarks>
+        /// Este endpoint recupera una lista de pagos con soporte para paginación y filtrado.
+        /// Los resultados incluyen detalles como estado, monto total, fecha de creación y relación con la orden.
+        /// 
+        /// Ejemplo de uso:
+        /// GET /api/Payments?PageNumber=1&PageSize=10
+        /// </remarks>
+        /// <param name="paymentQueryFilter">Filtros de búsqueda y paginación para pagos</param>
+        /// <returns>Lista paginada de pagos que coinciden con los criterios</returns>
+        /// <response code="200">Retorna la lista de pagos exitosamente</response>
+        /// <response code="400">Error en la validación de los parámetros de filtrado</response>
+        /// <response code="401">No autenticado. Token JWT requerido</response>
+        /// <response code="403">No autorizado. Se requiere rol Administrator</response>
+        /// <response code="500">Error interno del servidor al procesar la solicitud</response>
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<PaymentDto>>))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.Forbidden)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+
+        [HttpGet]
+        public async Task<IActionResult> GetPayments([FromQuery] PaymentQueryFilter paymentQueryFilter)
+        {
+            try
+            {
+                var payments = await _paymentService.GetAllPayment(paymentQueryFilter);
+
+                var paymentsDto = _mapper.Map<IEnumerable<PaymentDto>>(payments.Pagination);
+
+                var pagination = new Pagination
+                {
+                    TotalCount = payments.Pagination.TotalCount,
+                    PageSize = payments.Pagination.PageSize,
+                    CurrentPage = payments.Pagination.CurrentPage,
+                    TotalPages = payments.Pagination.TotalPages,
+                    HasNextPage = payments.Pagination.HasNextPage,
+                    HasPreviousPage = payments.Pagination.HasPreviousPage
+                };
+                var response = new ApiResponse<IEnumerable<PaymentDto>>(paymentsDto)
+                {
+                    Pagination = pagination,
+                    Messages = payments.Messages
+                };
+
+                return StatusCode((int)payments.StatusCode, response);
+            }
+            catch (Exception err)
+            {
+                var responsePost = new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Error", Description = err.Message } },
+                };
+                return StatusCode(500, responsePost);
+            }
+        }
 
         /// <summary>
         /// Obtiene un pago específico por su identificador único
@@ -63,7 +124,8 @@ namespace Amazon.api.Controllers
                 var payment = await _paymentService.GetByIdAsync(id);
                 
                 var paymentDto = _mapper.Map<PaymentDto>(payment);
-                return Ok(new ApiResponse<PaymentDto>(paymentDto));
+                var response = new ApiResponse<PaymentDto>(paymentDto);
+                return Ok(response);
             }
             catch (Exception ex)
             {
@@ -100,7 +162,9 @@ namespace Amazon.api.Controllers
                 var payment = await _paymentService.GetByOrderIdAsync(orderId);
 
                 var paymentDto = _mapper.Map<PaymentDto>(payment);
-                return Ok(new ApiResponse<PaymentDto>(paymentDto));
+                var response = new ApiResponse<PaymentDto>(paymentDto);
+
+                return Ok(response);
             }
             catch (Exception ex)
             {
@@ -109,36 +173,7 @@ namespace Amazon.api.Controllers
             }
         }
 
-        /// <summary>
-        /// Obtiene todos los pagos registrados en el sistema
-        /// </summary>
-        /// <remarks>
-        /// Este endpoint recupera una lista completa de todos los pagos existentes en el sistema.
-        /// Los resultados incluyen pagos en todos los estados (Pending, Completed, Failed).
-        /// 
-        /// Ejemplo de uso:
-        /// GET /api/Payments
-        /// </remarks>
-        /// <returns>Lista completa de todos los pagos del sistema</returns>
-        /// <response code="200">Retorna la lista de pagos exitosamente</response>
-        /// <response code="500">Error interno del servidor al procesar la solicitud</response>
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<PaymentDto>>))]
-        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        [HttpGet]
-        public async Task<IActionResult> GetAllPayments()
-        {
-            try
-            {
-                var payments = await _paymentService.GetAllAsync();
-                var paymentsDto = _mapper.Map<IEnumerable<PaymentDto>>(payments);
-                return Ok(new ApiResponse<IEnumerable<PaymentDto>>(paymentsDto));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError,
-                    new ApiResponse<string>($"Error: {ex.Message}"));
-            }
-        }
+      
         
     }
   }

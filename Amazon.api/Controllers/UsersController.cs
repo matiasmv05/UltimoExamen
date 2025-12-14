@@ -2,6 +2,7 @@
 using Amazon.Core.CustomEntities;
 using Amazon.Core.Entities;
 using Amazon.Core.Interface;
+using Amazon.Core.QueryFilters;
 using Amazon.Core.Services;
 using Amazon.infrastructure.DTOs;
 using Amazon.Infrastructure.Repositories;
@@ -29,29 +30,61 @@ namespace Amazon.api.Controllers
         }
 
         /// <summary>
-        /// Obtiene todos los usuarios registrados en el sistema
+        /// Obtiene una lista paginada de usuarios con filtros opcionales
         /// </summary>
         /// <remarks>
-        /// Este endpoint recupera una lista completa de todos los usuarios del sistema.
-        /// Incluye información básica como nombre, email y saldo de billetera.
+        /// Este endpoint recupera una lista de usuarios con soporte para paginación y filtrado.
+        /// Los resultados incluyen información básica como nombre, email y saldo de billetera.
+        /// 
+        /// Ejemplo de uso:
+        /// GET /api/Users?PageNumber=1&PageSize=10
         /// </remarks>
-        /// <returns>Lista completa de todos los usuarios del sistema</returns>
+        /// <param name="userQueryFilter">Filtros de búsqueda y paginación para usuarios</param>
+        /// <returns>Lista paginada de usuarios que coinciden con los criterios</returns>
         /// <response code="200">Retorna la lista de usuarios exitosamente</response>
+        /// <response code="400">Error en la validación de los parámetros de filtrado</response>
+        /// <response code="401">No autenticado. Token JWT requerido</response>
+        /// <response code="403">No autorizado. Se requiere rol Administrator</response>
         /// <response code="500">Error interno del servidor al procesar la solicitud</response>
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<UserDto>>))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.Forbidden)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
+        public async Task<IActionResult> GetUsers([FromQuery] UserQueryFilter userQueryFilter)
         {
             try
             {
-                var users = await _userService.GetAllAsync();
-                var usersDto = _mapper.Map<IEnumerable<UserDto>>(users);
-                var response = new ApiResponse<IEnumerable<UserDto>>(usersDto);
-                return Ok(response);
+                var users = await _userService.GetAllUsers(userQueryFilter);
+
+                var usersDto = _mapper.Map<IEnumerable<UserDto>>(users.Pagination);
+
+                var pagination = new Pagination
+                {
+                    TotalCount = users.Pagination.TotalCount,
+                    PageSize = users.Pagination.PageSize,
+                    CurrentPage = users.Pagination.CurrentPage,
+                    TotalPages = users.Pagination.TotalPages,
+                    HasNextPage = users.Pagination.HasNextPage,
+                    HasPreviousPage = users.Pagination.HasPreviousPage
+                };
+                var response = new ApiResponse<IEnumerable<UserDto>>(usersDto)
+                {
+                    Pagination = pagination,
+                    Messages = users.Messages
+                };
+
+                return StatusCode((int)users.StatusCode, response);
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError,
-                new ApiResponse<string>($"Error: {ex.Message}"));
+                var responsePost = new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Error", Description = err.Message } },
+                };
+                return StatusCode(500, responsePost);
             }
         }
 
@@ -142,9 +175,7 @@ namespace Amazon.api.Controllers
 
                 var user = _mapper.Map<User>(userDto);
                 await _userService.AddAsync(user);
-
-
-                var response = new ApiResponse<User>(user);
+                var response = new ApiResponse<UserDto>(userDto);
                 return Ok(response);
             }
             catch (Exception ex)

@@ -26,6 +26,35 @@ namespace Amazon.api.Controllers
             _passwordService = passwordService;
         }
 
+        /// <summary>
+        /// Autentica un usuario y genera un token JWT
+        /// </summary>
+        /// <remarks>
+        /// Este endpoint valida las credenciales del usuario y genera un token JWT
+        /// que puede ser usado para autenticar solicitudes en endpoints protegidos.
+        /// El token expira en 60 minutos.
+        /// 
+        /// Ejemplo de body:
+        /// {
+        ///     "user": "usuario123",
+        ///     "password": "Contraseña123"
+        /// }
+        /// 
+        /// La respuesta incluye un objeto con la propiedad "token" que contiene el JWT.
+        /// Este token debe incluirse en el header Authorization de solicitudes protegidas:
+        /// Authorization: Bearer [token]
+        /// </remarks>
+        /// <param name="userLogin">Credenciales de autenticación (login y password)</param>
+        /// <returns>Token JWT para autenticación en endpoints protegidos</returns>
+        /// <response code="200">Autenticación exitosa, retorna token JWT</response>
+        /// <response code="400">Error en la validación de las credenciales</response>
+        /// <response code="401">Credenciales inválidas o usuario no encontrado</response>
+        /// <response code="500">Error interno del servidor al procesar la autenticación</response>
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(object))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+
         [HttpPost]
         public async Task<IActionResult> Authentication([FromBody] UserLogin userLogin)
         {
@@ -46,6 +75,7 @@ namespace Amazon.api.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, err.Message);
             }
         }
+
 
         private async Task<(bool, Security)> IsValidUser(UserLogin userLogin)
         {
@@ -88,6 +118,24 @@ namespace Amazon.api.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        /// <summary>
+        /// Obtiene información de configuración del servidor (solo desarrollo)
+        /// </summary>
+        /// <remarks>
+        /// Este endpoint retorna información sensible de configuración como cadenas de conexión
+        /// y configuraciones de autenticación. **DEBE ESTAR PROTEGIDO EN PRODUCCIÓN**.
+        /// 
+        /// Útil para debugging en entornos de desarrollo.
+        /// 
+        /// Ejemplo de uso:
+        /// GET /api/Token/Config
+        /// </remarks>
+        /// <returns>Información de configuración del servidor</returns>
+        /// <response code="200">Retorna la información de configuración</response>
+        /// <response code="500">Error interno del servidor al obtener la configuración</response>
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(object))]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("Config")]
         public async Task<IActionResult> GetConfig()
         {

@@ -183,3 +183,4 @@ C:\Users\windows11\Desktop\4 Semestre\TEC WEB\Amazon\Amazon.api\obj\Debug\net9.0
 C:\Users\windows11\Desktop\4 Semestre\TEC WEB\Amazon\Amazon.api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\windows11\Desktop\4 Semestre\TEC WEB\Amazon\Amazon.api\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\windows11\Desktop\4 Semestre\TEC WEB\Amazon\Amazon.api\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+C:\Users\windows11\Desktop\4 Semestre\TEC WEB\AMAZON\Amazon.api\bin\Debug\net9.0\appsettings.Production.json

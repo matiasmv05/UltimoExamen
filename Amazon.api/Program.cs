@@ -157,7 +157,7 @@ public class Program {
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend Social Media API v1");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend AmazonDb API v1");
             options.RoutePrefix = string.Empty;
         });
 

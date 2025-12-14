@@ -259,6 +259,7 @@
             <response code="200">Lista de usuarios con mayor gasto recuperada exitosamente</response>
             <response code="500">Error interno del servidor al procesar la solicitud</response>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Amazon.api.Controllers.PaymentsController.GetPayments(Amazon.Core.QueryFilters.PaymentQueryFilter)" -->
         <member name="M:Amazon.api.Controllers.PaymentsController.GetPaymentById(System.Int32)">
             <summary>
             Obtiene un pago específico por su identificador único
@@ -295,36 +296,7 @@
             <response code="404">No se encontró pago para la orden especificada</response>
             <response code="500">Error interno del servidor al procesar la solicitud</response>
         </member>
-        <member name="M:Amazon.api.Controllers.PaymentsController.GetAllPayments">
-            <summary>
-            Obtiene todos los pagos registrados en el sistema
-            </summary>
-            <remarks>
-            Este endpoint recupera una lista completa de todos los pagos existentes en el sistema.
-            Los resultados incluyen pagos en todos los estados (Pending, Completed, Failed).
-            
-            Ejemplo de uso:
-            GET /api/Payments
-            </remarks>
-            <returns>Lista completa de todos los pagos del sistema</returns>
-            <response code="200">Retorna la lista de pagos exitosamente</response>
-            <response code="500">Error interno del servidor al procesar la solicitud</response>
-        </member>
-        <member name="M:Amazon.api.Controllers.ProductsController.GetAllProducts">
-            <summary>
-            Obtiene todos los productos registrados en el sistema
-            </summary>
-            <remarks>
-            Este endpoint recupera una lista completa de todos los productos disponibles en el catálogo.
-            Incluye información básica como nombre, categoría, precio y stock de cada producto.
-            
-            Ejemplo de uso:
-            GET /api/Products
-            </remarks>
-            <returns>Lista completa de todos los productos del sistema</returns>
-            <response code="200">Retorna la lista de productos exitosamente</response>
-            <response code="500">Error interno del servidor al procesar la solicitud</response>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:Amazon.api.Controllers.ProductsController.GetProducts(Amazon.Core.QueryFilters.ProductQueryFilter)" -->
         <member name="M:Amazon.api.Controllers.ProductsController.GetbyId(System.Int32)">
             <summary>
             Obtiene un producto específico por su identificador único
@@ -469,18 +441,75 @@
             <returns>Mensaje de confirmación del funcionamiento</returns>
             <response code="200">API funcionando correctamente</response>
         </member>
-        <member name="M:Amazon.api.Controllers.UsersController.GetAllUsers">
+        <member name="M:Amazon.api.Controllers.SecurityController.Order(Amazon.Infrastructure.DTOs.SecurityDto)">
             <summary>
-            Obtiene todos los usuarios registrados en el sistema
+            Registra un nuevo usuario en el sistema
             </summary>
             <remarks>
-            Este endpoint recupera una lista completa de todos los usuarios del sistema.
-            Incluye información básica como nombre, email y saldo de billetera.
+            Este endpoint permite registrar un nuevo usuario en el sistema Amazon.
+            La contraseña se hashea automáticamente antes de almacenarse.
+            
+            Ejemplo de body:
+            {
+                "login": "usuario123",
+                "password": "ContraseñaSegura123!",
+                "name": "Juan Pérez",
+                "role": "User"
+            }
+            
+            Roles disponibles: Administrator, Consumer, User
+            Si no se especifica un rol, se asigna "User" por defecto.
             </remarks>
-            <returns>Lista completa de todos los usuarios del sistema</returns>
-            <response code="200">Retorna la lista de usuarios exitosamente</response>
-            <response code="500">Error interno del servidor al procesar la solicitud</response>
+            <param name="securityDto">Datos del usuario a registrar</param>
+            <returns>Usuario registrado con su identificador asignado</returns>
+            <response code="200">Usuario registrado exitosamente</response>
+            <response code="400">Error en la validación de datos o usuario ya existe</response>
+            <response code="500">Error interno del servidor al registrar el usuario</response>
         </member>
+        <member name="M:Amazon.api.Controllers.TokenController.Authentication(Amazon.Core.Entities.UserLogin)">
+            <summary>
+            Autentica un usuario y genera un token JWT
+            </summary>
+            <remarks>
+            Este endpoint valida las credenciales del usuario y genera un token JWT
+            que puede ser usado para autenticar solicitudes en endpoints protegidos.
+            El token expira en 60 minutos.
+            
+            Ejemplo de body:
+            {
+                "user": "usuario123",
+                "password": "Contraseña123"
+            }
+            
+            La respuesta incluye un objeto con la propiedad "token" que contiene el JWT.
+            Este token debe incluirse en el header Authorization de solicitudes protegidas:
+            Authorization: Bearer [token]
+            </remarks>
+            <param name="userLogin">Credenciales de autenticación (login y password)</param>
+            <returns>Token JWT para autenticación en endpoints protegidos</returns>
+            <response code="200">Autenticación exitosa, retorna token JWT</response>
+            <response code="400">Error en la validación de las credenciales</response>
+            <response code="401">Credenciales inválidas o usuario no encontrado</response>
+            <response code="500">Error interno del servidor al procesar la autenticación</response>
+        </member>
+        <member name="M:Amazon.api.Controllers.TokenController.GetConfig">
+            <summary>
+            Obtiene información de configuración del servidor (solo desarrollo)
+            </summary>
+            <remarks>
+            Este endpoint retorna información sensible de configuración como cadenas de conexión
+            y configuraciones de autenticación. **DEBE ESTAR PROTEGIDO EN PRODUCCIÓN**.
+            
+            Útil para debugging en entornos de desarrollo.
+            
+            Ejemplo de uso:
+            GET /api/Token/Config
+            </remarks>
+            <returns>Información de configuración del servidor</returns>
+            <response code="200">Retorna la información de configuración</response>
+            <response code="500">Error interno del servidor al obtener la configuración</response>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Amazon.api.Controllers.UsersController.GetUsers(Amazon.Core.QueryFilters.UserQueryFilter)" -->
         <member name="M:Amazon.api.Controllers.UsersController.GetUserById(System.Int32)">
             <summary>
             Obtiene un usuario específico por su identificador único

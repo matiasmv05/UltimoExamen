@@ -3,6 +3,8 @@ using Amazon.Core.CustomEntities;
 using Amazon.Core.Entities;
 using Amazon.Core.Enum;
 using Amazon.Core.Interface;
+using Amazon.Core.QueryFilters;
+using Amazon.Core.Services;
 using Amazon.infrastructure.DTOs;
 using Amazon.Infrastructure.Repositories;
 using Amazon.Infrastructure.Validators;
@@ -36,36 +38,62 @@ namespace Amazon.api.Controllers
             _userService = userService;
         }
 
-        #region DTO con AutoMapper
         /// <summary>
-        /// Obtiene todos los productos registrados en el sistema
+        /// Obtiene una lista paginada de productos con filtros opcionales
         /// </summary>
         /// <remarks>
-        /// Este endpoint recupera una lista completa de todos los productos disponibles en el catálogo.
-        /// Incluye información básica como nombre, categoría, precio y stock de cada producto.
+        /// Este endpoint recupera una lista de productos con soporte para paginación y filtrado.
+        /// Los resultados incluyen información básica como nombre, precio, categoría y stock.
         /// 
         /// Ejemplo de uso:
-        /// GET /api/Products
+        /// GET /api/Products?PageNumber=1&PageSize=10
         /// </remarks>
-        /// <returns>Lista completa de todos los productos del sistema</returns>
+        /// <param name="productQueryFilter">Filtros de búsqueda y paginación para productos</param>
+        /// <returns>Lista paginada de productos que coinciden con los criterios</returns>
         /// <response code="200">Retorna la lista de productos exitosamente</response>
+        /// <response code="400">Error en la validación de los parámetros de filtrado</response>
+        /// <response code="401">No autenticado. Token JWT requerido</response>
+        /// <response code="403">No autorizado. Rol no permitido</response>
         /// <response code="500">Error interno del servidor al procesar la solicitud</response>
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<ProductDto>>))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.Forbidden)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+
         [HttpGet]
-        public async Task<IActionResult> GetAllProducts()
+        public async Task<IActionResult> GetProducts([FromQuery] ProductQueryFilter productQueryFilter)
         {
             try
             {
-                var products = await _productService.GetAllAsync();
-                var productsDto = _mapper.Map<IEnumerable<ProductDto>>(products);
-                var response = new ApiResponse<IEnumerable<ProductDto>>(productsDto);
-                return Ok(response);
+                var products = await _productService.GetAllProducts(productQueryFilter);
+
+                var productDto = _mapper.Map<IEnumerable<ProductDto>>(products.Pagination);
+
+                var pagination = new Pagination
+                {
+                    TotalCount = products.Pagination.TotalCount,
+                    PageSize = products.Pagination.PageSize,
+                    CurrentPage = products.Pagination.CurrentPage,
+                    TotalPages = products.Pagination.TotalPages,
+                    HasNextPage = products.Pagination.HasNextPage,
+                    HasPreviousPage = products.Pagination.HasPreviousPage
+                };
+                var response = new ApiResponse<IEnumerable<ProductDto>>(productDto)
+                {
+                    Pagination = pagination,
+                    Messages = products.Messages
+                };
+
+                return StatusCode((int)products.StatusCode, response);
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError,
-                    new ApiResponse<string>($"Error: {ex.Message}"));
+                var responsePost = new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Error", Description = err.Message } },
+                };
+                return StatusCode(500, responsePost);
             }
         }
 
@@ -234,9 +262,6 @@ namespace Amazon.api.Controllers
                     }));
                 }
                 #endregion
-
-                _mapper.Map(productDto, product);
-
                 await _productService.Update(product);
                 var updatedProduct = await _productService.GetByIdAsync(id);
                 var productDtoResponse = _mapper.Map<ProductDto>(updatedProduct);
@@ -288,7 +313,6 @@ namespace Amazon.api.Controllers
             }
         }
 
-        #endregion
 
         /// <summary>
         /// Obtiene productos filtrados por categoría específica
@@ -419,7 +443,8 @@ namespace Amazon.api.Controllers
                 product.Stock = quantity;
                 await _productService.Update(product);
 
-                var response = new ApiResponse<Product>(product);
+                var productDto = _mapper.Map<ProductDto>(product);
+                var response = new ApiResponse<ProductDto>(productDto);
                 return Ok(response);
             }
             catch (Exception ex)
