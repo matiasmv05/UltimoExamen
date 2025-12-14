@@ -1,8 +1,11 @@
-﻿using Amazon.Core.Entities;
+using Amazon.Core.CustomEntities;
+using Amazon.Core.Entities;
 using Amazon.Core.Interface;
+using Amazon.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +37,43 @@ namespace Amazon.Core.Services
 
 
         /// //////////////////////////////////////////////////////////////////
+
+        public async Task<ResponseData> GetAllUsers(UserQueryFilter filters)
+        {
+            var users = await _unitOfWork.UserRepository.GetAllAsync();
+
+            if (filters.Name != null)
+            {
+                users = users.Where(x => x.Name == filters.Name);
+            }
+
+            if (filters.Email != null)
+            {
+                users = users.Where(x => x.Email == filters.Email);
+            }
+
+            
+            var pagedOrders = PagedList<object>.Create(users, filters.PageNumber, filters.PageSize);
+            if (pagedOrders.Any())
+            {
+                return new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Information", Description = "Registros de orders recuperados correctamente" } },
+                    Pagination = pagedOrders,
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            else
+            {
+                return new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Warning", Description = "No fue posible recuperar la cantidad de registros" } },
+                    Pagination = pagedOrders,
+                    StatusCode = HttpStatusCode.NotFound
+                };
+            }
+        }
+
         public async Task<User> GetByEmailAsync(string email)
         {
         return await _unitOfWork.UserRepository.GetByEmailAsync(email);
