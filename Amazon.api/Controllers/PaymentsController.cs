@@ -65,7 +65,7 @@ namespace Amazon.api.Controllers
         {
             try
             {
-                var payments = await _paymentService.GetAllPayment(paymentQueryFilter);
+                var payments = await _paymentService.GetAllPayments(paymentQueryFilter);
 
                 var paymentsDto = _mapper.Map<IEnumerable<PaymentDto>>(payments.Pagination);
 

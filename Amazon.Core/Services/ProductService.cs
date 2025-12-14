@@ -1,8 +1,11 @@
-﻿using Amazon.Core.Entities;
+﻿using Amazon.Core.CustomEntities;
+using Amazon.Core.Entities;
 using Amazon.Core.Interface;
+using Amazon.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +33,56 @@ namespace Amazon.Core.Services
             //_productRepository = productRepository;
             //_paymentRepository = paymentRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        public async Task<ResponseData> GetAllProducts(ProductQueryFilter filters)
+        {
+            var products = await _unitOfWork.ProductRepository.GetAll();
+
+            if (filters.Name != null)
+            {
+                products = products.Where(x => x.Name == filters.Name);
+            }
+
+            if (filters.SellerId > 0)
+            {
+                products = products.Where(x => x.SellerId == filters.SellerId);
+            }
+
+            if (filters.Category != null)
+            {
+                products = products.Where(x => x.Category == filters.Category);
+            }
+
+            if (filters.Price > 0)
+            {
+                products = products.Where(x => x.Price == filters.Price);
+            }
+
+            if (filters.Description != null)
+            {
+                products = products.Where(x => x.Description == filters.Description);
+            }
+
+            var pagedOrders = PagedList<object>.Create(products, filters.PageNumber, filters.PageSize);
+            if (pagedOrders.Any())
+            {
+                return new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Information", Description = "Registros de orders recuperados correctamente" } },
+                    Pagination = pagedOrders,
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            else
+            {
+                return new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Warning", Description = "No fue posible recuperar la cantidad de registros" } },
+                    Pagination = pagedOrders,
+                    StatusCode = HttpStatusCode.NotFound
+                };
+            }
         }
 
         public async Task AddAsync(Product product)

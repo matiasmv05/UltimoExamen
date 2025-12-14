@@ -16,10 +16,6 @@ namespace Amazon.Infrastructure.Validators
                 .NotEmpty().WithMessage("El estado del pago es requerido")
                 .Must(BeValidPaymentStatus).WithMessage("Estado de pago no válido. Valores permitidos: Pending, Completed, Failed");
 
-            RuleFor(x => x.TotalAmount)
-                .GreaterThan(0).WithMessage("El monto total debe ser mayor a 0")
-                .LessThan(1000000).WithMessage("El monto total no puede ser mayor a 1,000,000");
-
             RuleFor(x => x.CreatedAt)
                 .LessThanOrEqualTo(DateTime.UtcNow).WithMessage("La fecha de creación esta mal configurada");
         }

@@ -563,6 +563,11 @@
         "IsRequired": false
       },
       {
+        "Name": "TotalAmount",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
         "Name": "CreatedAt",
         "Type": "System.DateTime",
         "IsRequired": false
@@ -739,17 +744,17 @@
         "IsRequired": false
       },
       {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "Price",
         "Type": "System.Decimal",
         "IsRequired": false
       },
       {
         "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
       },

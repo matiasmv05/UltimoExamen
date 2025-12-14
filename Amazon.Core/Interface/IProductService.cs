@@ -1,4 +1,6 @@
-﻿using Amazon.Core.Entities;
+﻿using Amazon.Core.CustomEntities;
+using Amazon.Core.Entities;
+using Amazon.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace Amazon.Core.Interface
 {
     public interface IProductService
     {
+        Task<ResponseData> GetAllProducts(ProductQueryFilter filters);
         Task<IEnumerable<Product>> GetAllAsync();
         Task<Product> GetByIdAsync(int id);
         Task AddAsync(Product product);

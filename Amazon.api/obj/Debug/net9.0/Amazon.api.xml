@@ -16,7 +16,7 @@
             - Generar reportes de ventas
             </remarks>
         </member>
-        <member name="M:Amazon.Api.Controllers.OrdersController.GetOrders(Amazon.Core.QueryFilters.OrderQueryFilter)">
+        <member name="M:Amazon.Api.Controllers.OrdersController.GetOrders(OrderQueryFilter)">
             <summary>
             Recupera todas las órdenes registradas en el sistema
             </summary>

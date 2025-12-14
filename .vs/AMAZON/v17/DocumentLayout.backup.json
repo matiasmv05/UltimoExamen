@@ -1,0 +1,262 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\windows11\\UltimoExamen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\queryfilters\\paymentqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\queryfilters\\paymentqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\queryfilters\\productqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\queryfilters\\productqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\queryfilters\\paginationqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\queryfilters\\paginationqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\queryfilters\\orderqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\queryfilters\\orderqueryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C6C07A2-A7B1-4722-93E3-E0084F16281B}|Amazon.api\\Amazon.api.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1C6C07A2-A7B1-4722-93E3-E0084F16281B}|Amazon.api\\Amazon.api.csproj|solutionrelative:amazon.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C6C07A2-A7B1-4722-93E3-E0084F16281B}|Amazon.api\\Amazon.api.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.api\\controllers\\productscontrollercs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C6C07A2-A7B1-4722-93E3-E0084F16281B}|Amazon.api\\Amazon.api.csproj|solutionrelative:amazon.api\\controllers\\productscontrollercs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BB63972-32E8-427E-942C-F1EAD6CA7AA2}|Amazon.Infrastructure\\Amazon.Infrastructure.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.infrastructure\\validators\\paymentdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BB63972-32E8-427E-942C-F1EAD6CA7AA2}|Amazon.Infrastructure\\Amazon.Infrastructure.csproj|solutionrelative:amazon.infrastructure\\validators\\paymentdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BB63972-32E8-427E-942C-F1EAD6CA7AA2}|Amazon.Infrastructure\\Amazon.Infrastructure.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.infrastructure\\dtos\\paymentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BB63972-32E8-427E-942C-F1EAD6CA7AA2}|Amazon.Infrastructure\\Amazon.Infrastructure.csproj|solutionrelative:amazon.infrastructure\\dtos\\paymentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C6C07A2-A7B1-4722-93E3-E0084F16281B}|Amazon.api\\Amazon.api.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C6C07A2-A7B1-4722-93E3-E0084F16281B}|Amazon.api\\Amazon.api.csproj|solutionrelative:amazon.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\interface\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\interface\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\interface\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\interface\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|c:\\users\\windows11\\ultimoexamen\\amazon.core\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF95315F-5DF0-43B3-8561-B59327ED7FF3}|Amazon.Core\\Amazon.Core.csproj|solutionrelative:amazon.core\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductQueryFilter.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\ProductQueryFilter.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\QueryFilters\\ProductQueryFilter.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\ProductQueryFilter.cs",
+              "RelativeToolTip": "Amazon.Core\\QueryFilters\\ProductQueryFilter.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:26:07.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PaymentQueryFilter.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\PaymentQueryFilter.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\QueryFilters\\PaymentQueryFilter.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\PaymentQueryFilter.cs",
+              "RelativeToolTip": "Amazon.Core\\QueryFilters\\PaymentQueryFilter.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:22:44.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PaginationQueryFilter.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\PaginationQueryFilter.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\QueryFilters\\PaginationQueryFilter.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\PaginationQueryFilter.cs",
+              "RelativeToolTip": "Amazon.Core\\QueryFilters\\PaginationQueryFilter.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:20:14.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderQueryFilter.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\OrderQueryFilter.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\QueryFilters\\OrderQueryFilter.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\QueryFilters\\OrderQueryFilter.cs",
+              "RelativeToolTip": "Amazon.Core\\QueryFilters\\OrderQueryFilter.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAUwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:19:10.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.api\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Amazon.api\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.api\\appsettings.Development.json",
+              "RelativeToolTip": "Amazon.api\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-14T23:16:03.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PaymentDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Infrastructure\\Validators\\PaymentDtoValidator.cs",
+              "RelativeDocumentMoniker": "Amazon.Infrastructure\\Validators\\PaymentDtoValidator.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Infrastructure\\Validators\\PaymentDtoValidator.cs",
+              "RelativeToolTip": "Amazon.Infrastructure\\Validators\\PaymentDtoValidator.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAWwBAAAACEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:13:18.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PaymentDto.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Infrastructure\\DTOs\\PaymentDto.cs",
+              "RelativeDocumentMoniker": "Amazon.Infrastructure\\DTOs\\PaymentDto.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Infrastructure\\DTOs\\PaymentDto.cs",
+              "RelativeToolTip": "Amazon.Infrastructure\\DTOs\\PaymentDto.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:12:16.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Interface\\IUserService.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\Interface\\IUserService.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Interface\\IUserService.cs",
+              "RelativeToolTip": "Amazon.Core\\Interface\\IUserService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:08:22.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Services\\UserService.cs",
+              "RelativeToolTip": "Amazon.Core\\Services\\UserService.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAACgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:06:28.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.api\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Amazon.api\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.api\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Amazon.api\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:06:13.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Interface\\IProductService.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\Interface\\IProductService.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Interface\\IProductService.cs",
+              "RelativeToolTip": "Amazon.Core\\Interface\\IProductService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:05:52.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Services\\PaymentService.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\Services\\PaymentService.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Services\\PaymentService.cs",
+              "RelativeToolTip": "Amazon.Core\\Services\\PaymentService.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAIwFMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:01:37.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "Amazon.Core\\Services\\ProductService.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Services\\ProductService.cs",
+              "RelativeToolTip": "Amazon.Core\\Services\\ProductService.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAUwFUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:01:28.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductsControllercs.cs",
+              "DocumentMoniker": "C:\\Users\\windows11\\UltimoExamen\\Amazon.api\\Controllers\\ProductsControllercs.cs",
+              "RelativeDocumentMoniker": "Amazon.api\\Controllers\\ProductsControllercs.cs",
+              "ToolTip": "C:\\Users\\windows11\\UltimoExamen\\Amazon.api\\Controllers\\ProductsControllercs.cs",
+              "RelativeToolTip": "Amazon.api\\Controllers\\ProductsControllercs.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAAAMgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:00:52.839Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

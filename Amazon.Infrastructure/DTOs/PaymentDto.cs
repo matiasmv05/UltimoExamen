@@ -10,9 +10,7 @@ namespace Amazon.Infrastructure.DTOs
     public class PaymentDto
     {
         public int? Id { get; set; }
-        public int OrderId { get; set; }
         public string Status { get; set; }
-        public decimal TotalAmount { get; set; }
         public DateTime CreatedAt { get; set; }
         public virtual OrderDto? order { get; set; }
     }

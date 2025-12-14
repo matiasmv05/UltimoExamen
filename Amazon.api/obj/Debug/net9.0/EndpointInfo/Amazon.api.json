@@ -956,6 +956,14 @@
             }
           },
           {
+            "name": "TotalAmount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
             "name": "CreatedAt",
             "in": "query",
             "schema": {
@@ -1261,13 +1269,6 @@
             }
           },
           {
-            "name": "Description",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "Price",
             "in": "query",
             "schema": {
@@ -1277,6 +1278,13 @@
           },
           {
             "name": "Category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Description",
             "in": "query",
             "schema": {
               "type": "string"
@@ -3018,6 +3026,11 @@
       "OrderItemDto": {
         "type": "object",
         "properties": {
+          "orderId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "productId": {
             "type": "integer",
             "format": "int32"
