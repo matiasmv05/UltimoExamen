@@ -1,4 +1,4 @@
-﻿using Amazon.Core.Entities;
+using Amazon.Core.Entities;
 using Amazon.Core.Interface;
 using System;
 using System.Collections.Generic;
