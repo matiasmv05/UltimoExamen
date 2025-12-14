@@ -1,4 +1,4 @@
-﻿using Amazon.api.Responses;
+using Amazon.api.Responses;
 using Amazon.Core.CustomEntities;
 using Amazon.Core.Entities;
 using Amazon.Core.Enum;
