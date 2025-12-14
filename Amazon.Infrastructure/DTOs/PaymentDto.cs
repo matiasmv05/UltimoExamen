@@ -1,4 +1,4 @@
-﻿using Amazon.infrastructure.DTOs;
+using Amazon.infrastructure.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
