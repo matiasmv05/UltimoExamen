@@ -1,8 +1,11 @@
-﻿using Amazon.Core.Entities;
+using Amazon.Core.CustomEntities;
+using Amazon.Core.Entities;
 using Amazon.Core.Interface;
+using Amazon.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +43,45 @@ namespace Amazon.Core.Services
             return await _unitOfWork.PaymentRepository.GetAllAsync();
         }
 
+        public async Task<ResponseData> GetAllPayments(PaymentQueryFilter filters)
+        {
+            var payments = await _unitOfWork.PaymentRepository.GetAllAsync();
+
+            if (filters.OrderId > 0)
+            {
+                payments = payments.Where(x => x.OrderId == filters.OrderId);
+            }
+
+            if (filters.TotalAmount > 0)
+            {
+                payments = payments.Where(x => x.TotalAmount == filters.TotalAmount);
+            }
+
+            if (filters.Status != null)
+            {
+                payments = payments.Where(x => x.Status == filters.Status);
+            }
+
+            var pagedOrders = PagedList<object>.Create(payments, filters.PageNumber, filters.PageSize);
+            if (pagedOrders.Any())
+            {
+                return new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Information", Description = "Registros de orders recuperados correctamente" } },
+                    Pagination = pagedOrders,
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            else
+            {
+                return new ResponseData()
+                {
+                    Messages = new Message[] { new() { Type = "Warning", Description = "No fue posible recuperar la cantidad de registros" } },
+                    Pagination = pagedOrders,
+                    StatusCode = HttpStatusCode.NotFound
+                };
+            }
+        }
         public async Task<Payment> GetByIdAsync(int id)
         {
             return await _unitOfWork.PaymentRepository.GetById(id);
