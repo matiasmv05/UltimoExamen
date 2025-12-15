@@ -441,7 +441,7 @@
             <returns>Mensaje de confirmación del funcionamiento</returns>
             <response code="200">API funcionando correctamente</response>
         </member>
-        <member name="M:Amazon.api.Controllers.SecurityController.Order(Amazon.Infrastructure.DTOs.SecurityDto)">
+        <member name="M:Amazon.api.Controllers.SecurityController.Register(Amazon.Infrastructure.DTOs.SecurityDto)">
             <summary>
             Registra un nuevo usuario en el sistema
             </summary>

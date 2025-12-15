@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿using Amazon.Core.CustomEntities;
-=======
-using Amazon.Core.CustomEntities;
->>>>>>> 76960dffaad66a3488e31e29060769f6f1fac94f
 using Amazon.Core.Entities;
 using Amazon.Core.QueryFilters;
 using System;

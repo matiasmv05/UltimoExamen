@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Amazon.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+036e6f3c88557df31737dfbbdd42b20417a6741d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2d29b86a52694787751b176080a3fc948ebb582")]
 [assembly: System.Reflection.AssemblyProductAttribute("Amazon.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Amazon.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

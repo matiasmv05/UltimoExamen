@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿using Swashbuckle.AspNetCore.Annotations;
-=======
-using Swashbuckle.AspNetCore.Annotations;
->>>>>>> 76960dffaad66a3488e31e29060769f6f1fac94f
 using System;
 using System.Collections.Generic;
 using System.Linq;

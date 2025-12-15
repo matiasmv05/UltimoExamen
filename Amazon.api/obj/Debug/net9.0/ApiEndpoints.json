@@ -1139,7 +1139,7 @@
   },
   {
     "ContainingType": "Amazon.api.Controllers.SecurityController",
-    "Method": "Order",
+    "Method": "Register",
     "RelativePath": "api/Security/register",
     "HttpMethod": "POST",
     "IsController": true,

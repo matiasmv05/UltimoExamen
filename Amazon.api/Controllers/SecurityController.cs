@@ -55,7 +55,7 @@ namespace Amazon.api.Controllers
 
         //[Authorize(Roles = $"{nameof(RoleType.Administrator)},{nameof(RoleType.User)}")]
         [HttpPost("register")]
-        public async Task<IActionResult> Order(SecurityDto securityDto)
+        public async Task<IActionResult> Register(SecurityDto securityDto)
         {
             var security = _mapper.Map<Security>(securityDto);
             security.Password = _passwordService.Hash(securityDto.Password);

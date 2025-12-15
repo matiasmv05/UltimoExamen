@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bhEvX8c/CvA=",
+  "dgSpecHash": "ULu03wnxBXo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\windows11\\UltimoExamen\\Amazon.Core\\Amazon.Core.csproj",
+  "projectFilePath": "C:\\Users\\windows11\\Desktop\\UltimoExamen\\Amazon.Core\\Amazon.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\windows11\\.nuget\\packages\\microsoft.openapi\\1.6.25\\microsoft.openapi.1.6.25.nupkg.sha512",
     "C:\\Users\\windows11\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\9.0.6\\swashbuckle.aspnetcore.annotations.9.0.6.nupkg.sha512",

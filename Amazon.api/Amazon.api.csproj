@@ -13,6 +13,11 @@
 		<UserSecretsId>e81beb55-f7a5-4cbf-9fbc-8df1272ff714</UserSecretsId>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Content Include="Properties\serviceDependencies.json" />
+	  <Content Include="Properties\ServiceDependencies\Amazon - Web Deploy\profile.arm.json" />
+	</ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
